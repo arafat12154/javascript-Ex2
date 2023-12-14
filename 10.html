@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voting Program</title>
+</head>
+<body>
+
+<script>
+  function getUserInput(promptText) {
+    return prompt(promptText);
+  }
+
+  function initializeCandidates(numCandidates) {
+    let candidates = [];
+    for (let i = 1; i <= numCandidates; i++) {
+      let candidateName = getUserInput("Name for candidate " + i);
+      candidates.push({
+        name: candidateName,
+        votes: 0
+      });
+    }
+    return candidates;
+  }
+
+  function conductVoting(candidates, numVoters) {
+    for (let i = 1; i <= numVoters; i++) {
+      let voterChoice = getUserInput("Voter " + i + ", enter the name of the candidate you want to vote for (or leave it blank for an empty vote):");
+
+      if (voterChoice === null) {
+        alert("Voting canceled. Please restart the program.");
+        return;
+      }
+
+      let candidate = candidates.find(candidate => candidate.name === voterChoice);
+      if (candidate) {
+        candidate.votes++;
+        alert("Vote for " + voterChoice + " recorded!");
+      } else {
+        alert("Invalid candidate name. Please enter a valid candidate name.");
+        i--; 
+      }
+    }
+  }
+
+  function displayResults(candidates) {
+    candidates.sort((a, b) => b.votes - a.votes);
+
+    alert("The winner is " + candidates[0].name + " with " + candidates[0].votes + " votes.");
+
+    let resultsText = "Results:\n";
+    for (let i = 0; i < candidates.length; i++) {
+      resultsText += candidates[i].name + ": " + candidates[i].votes + " votes\n";
+    }
+
+    alert(resultsText);
+  }
+
+  function mainProgram() {
+    let numCandidates = parseInt(getUserInput("Enter the number of candidates:"));
+
+    let candidates = initializeCandidates(numCandidates);
+
+    let numVoters = parseInt(getUserInput("Enter the number of voters:"));
+
+    conductVoting(candidates, numVoters);
+
+    displayResults(candidates);
+  }
+
+  mainProgram();
+</script>
+
+</body>
+</html>

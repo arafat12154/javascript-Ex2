@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Tracker</title>
+</head>
+<body>
+
+<script>
+    function getNumbers() {
+        let numbers = [];
+        while (true) {
+            let userInput = prompt("Enter a number (or type 'exit' to stop):");
+
+            if (userInput.toLowerCase() === 'exit') {
+                break;
+            }
+
+            let number = parseInt(userInput);
+
+            if (!isNaN(number)) {
+                if (numbers.includes(number)) {
+                    alert("Number already entered. Stopping operation.");
+                    break;
+                }
+
+                numbers.push(number);
+            } else {
+                alert("Invalid input. Please enter a valid number.");
+            }
+        }
+
+        numbers.sort(function(a, b) {
+            return a - b;
+        });
+
+        console.log("Numbers in ascending order:", numbers);
+    }
+
+    getNumbers();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concatenated String</title>
+</head>
+<body>
+    <script>
+        function concat(stringsArray) {
+            let result = "";
+            for (let i = 0; i < stringsArray.length; i++) {
+                result += stringsArray[i];
+            }
+            return result;
+        }
+
+        const namesArray = ["Johnny", "DeeDee", "Joey", "Marky"];
+
+        const concatenatedString = concat(namesArray);
+
+        document.write(`<p>Concatenated String: ${concatenatedString}</p>`);
+    </script>
+</body>
+</html>

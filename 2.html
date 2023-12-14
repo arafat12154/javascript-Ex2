@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participants List</title>
+</head>
+<body>
+
+<script>
+    function getNumberOfParticipants() {
+        let numParticipants = prompt("Enter the number of participants:");
+        return parseInt(numParticipants);
+    }
+
+    function getParticipantNames(numParticipants) {
+        let participantNames = [];
+        for (let i = 0; i < numParticipants; i++) {
+            let name = prompt("Enter the name of participant " + (i + 1) + ":");
+            participantNames.push(name);
+        }
+        return participantNames;
+    }
+
+    function main() {
+        let numParticipants = getNumberOfParticipants();
+
+        let participantNames = getParticipantNames(numParticipants);
+
+        participantNames.sort();
+
+        document.write("<h2>Participants List</h2>");
+        document.write("<ol>");
+        for (let i = 0; i < numParticipants; i++) {
+            document.write("<li>" + participantNames[i] + "</li>");
+        }
+        document.write("</ol>");
+    }
+
+    main();
+</script>
+
+</body>
+</html>
